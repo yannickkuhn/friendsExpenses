@@ -5,8 +5,9 @@
  *      Author: aabou
  */
 
-#include "Person.hpp"
 #include "Group.hpp"
+#include "Person.hpp"
+
 
 Person::Person() :
     _expenses(0),
@@ -36,7 +37,7 @@ const float Person::getExpenses() {
 const float Person::getPayback() {
 	return _payback;
 }
-Group *Person::getGroup() {
+Group* Person::getGroup() {
 	return _group;
 }
 

@@ -25,7 +25,7 @@ public:
     const string& getPhoneNumber() const;
     const float getExpenses();
     const float getPayback();
-    Group *getGroup();
+    Group* getGroup();
 
 // setters of Person
     void setName(const string& name);

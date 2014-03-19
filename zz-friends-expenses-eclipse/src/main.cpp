@@ -16,65 +16,79 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    unsigned int aNb = 0;
-    string aNameG;
+    unsigned int aNb = 0, aNbGroup;
+
+    vector<Group> aGroups;
 
     /*
      *  Register the input
      */
-    cout << "what is the name of your group ?" << endl;
-    cin >> aNameG;
-    cout << "How many people are you?" << endl;
-    cin >> aNb;
 
+    cout << "How many group ?" << endl;
+    cin >> aNbGroup;
 
+    for(unsigned int j=0;j<aNbGroup;j++) {
 
+    	string aNameG;
+    	Group aGroup;
 
-    /*aGroup.setName(aNameG);
+    	cout << "What is the name of group " << j+1 << " ?"  << endl;
+    	cin >> aNameG;
 
-    for (unsigned int i=0; i < aNb; i++) {
-        Person aPerson;
-        string aName, aPhoneNumber;
-        float aExpenses;
+    	cout << "How many people in group " << j+1 << " ?" << endl;
+    	cin >> aNb;
 
-        cout << "What is the name of person " << i+1 << " ?" << endl;
-        cin >> aName;
-        aPerson.setName(aName);
+    	aGroup.setName(aNameG);
 
-        cout << "What is the phone number of person " << i+1 << " ?" << endl;
-        cin >> aPhoneNumber;
-        aPerson.setPhoneNumber(aPhoneNumber);
+    	for (unsigned int i=0; i < aNb; i++) {
+			Person aPerson;
+			string aName, aPhoneNumber;
+			float aExpenses;
 
-        cout << "What is the expenses of person " << i+1 << " ?" << endl;
-        cin >> aExpenses;
-        aPerson.setExpenses(aExpenses);
+			cout << "What is the name of person " << i+1 << " of group " << j+1 << " ?" << endl;
+			cin >> aName;
+			aPerson.setName(aName);
 
-        aGroup.push_back(aPerson);
-    }*/
+			cout << "What is the phone number of person " << i+1 << " of group " << j+1 << " ?" << endl;
+			cin >> aPhoneNumber;
+			aPerson.setPhoneNumber(aPhoneNumber);
 
-    /*
-     *  Prepare the output
-     */
-    /*cout << endl;
-    cout << "Total expenses:\t\t" << aGroup.totalExpenses() << endl;
-    float aExpensesPerPerson = aGroup.expensesPerPerson();
-    cout << "Expenses per person:\t" << aExpensesPerPerson << endl;
-    cout << endl;
+			cout << "What is the expenses of person " << i+1 << " of group " << j+1 << " ?" << endl;
+			cin >> aExpenses;
+			aPerson.setExpenses(aExpenses);
 
-    cout << "Name\t\t" << "Phone Number\t" << "Expenses\t"
-        << "Payback\t\t" << "GroupName" << endl;
-    cout << "-----------------------------------------------------------------------"
-        << endl;
-
-    for (size_t i=0; i < aGroup.size(); ++i) {
-        // operate the payback first
-        aGroup[i].operatePayback(aExpensesPerPerson);
-        // display the values
-        cout << aGroup[i].getName() << "\t\t" << aGroup[i].getPhoneNumber()
-            << "\t\t" << aGroup[i].getExpenses() << "\t\t"
-            << aGroup[i].getPayback() << "\t\t" << aGroup.getName() << endl;
+			aPerson.setGroup(&aGroup);
+			aGroup.push_back(aPerson);
+		}
+    	aGroups.push_back(aGroup);
     }
-    cout << endl;*/
+
+	for (vector<Group>::iterator it = aGroups.begin() ; it != aGroups.end(); ++it) {
+
+		cout << endl;
+		cout << "Group " << it->getName() << endl;
+		cout << "Total expenses:\t\t" << it->totalExpenses() << endl;
+		cout << "Expenses per person:\t" << it->expensesPerPerson() << endl;
+		cout << endl;
+
+		cout << "Name\t\t" << "Phone Number\t" << "Expenses\t"
+		<< "Payback\t\t" << "Group" << endl;
+		cout << "--------------------------------------------------------------------------"
+		<< endl;
+
+		Group aGroup = *it;
+		for (size_t i=0; i < aGroup.size(); ++i) {
+			// operate the payback first
+			aGroup[i].operatePayback(aGroup.expensesPerPerson());
+			// display the values
+			cout << aGroup[i].getName() << "\t\t" << aGroup[i].getPhoneNumber()
+			<< "\t\t" << aGroup[i].getExpenses() << "\t\t"
+			<< aGroup[i].getPayback() << "\t\t" << aGroup[i].getGroup()->getName() << endl;
+		}
+		cout << endl;
+    }
+
+
 
     return 0;
 }

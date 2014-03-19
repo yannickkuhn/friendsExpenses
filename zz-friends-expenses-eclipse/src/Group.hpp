@@ -10,10 +10,8 @@
 
 #include <vector>
 #include <string>
+#include "Person.hpp"
 
-using namespace std;
-
-class Person;
 
 class Group : public vector<Person> {
 
@@ -27,12 +25,12 @@ public:
 // getters of Group
     const float getExpensePerPerson();
     const float getTotalExpenses();
-    const string getName();
+    const string& getName();
 
 // setters of Group
     void setExpensePerPerson(const float expensePerPerson);
     void setTotalExpenses(const float totalExpenses);
-    void setName(const string name);
+    void setName(const string& name);
 
 private:
 	float _expensePerPerson;

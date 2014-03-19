@@ -5,8 +5,9 @@
  *      Author: aabou
  */
 
-#include "Group.hpp"
 #include "Person.hpp"
+#include "Group.hpp"
+
 
 Group::Group() :
 	_expensePerPerson(0),
@@ -39,7 +40,7 @@ const float Group::getExpensePerPerson() {
 const float Group::getTotalExpenses() {
 	return _totalExpenses;
 }
-const string Group::getName() {
+const string& Group::getName() {
 	return _name;
 }
 
@@ -53,6 +54,6 @@ void Group::setTotalExpenses(const float totalExpenses) {
 	_totalExpenses = totalExpenses;
 }
 
-void Group::setName(const string name) {
+void Group::setName(const string& name) {
 	_name = name;
 }
