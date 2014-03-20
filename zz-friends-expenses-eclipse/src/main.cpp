@@ -12,6 +12,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <unistd.h>
+#include <sstream>
 
 using namespace std;
 
@@ -19,7 +22,6 @@ int main(int argc, char **argv) {
     unsigned int aNb = 0, aNbGroup;
 
     vector<Group> aGroups;
-
     /*
      *  Register the input
      */
@@ -87,8 +89,6 @@ int main(int argc, char **argv) {
 		}
 		cout << endl;
     }
-
-
 
     return 0;
 }
