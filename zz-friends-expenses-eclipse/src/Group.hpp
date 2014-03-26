@@ -23,9 +23,9 @@ public:
     float expensesPerPerson();
 
 // getters of Group
-    const float getExpensePerPerson();
-    const float getTotalExpenses();
-    const string& getName();
+    const float getExpensePerPerson() const;
+    const float getTotalExpenses() const;
+    const string& getName() const;
 
 // setters of Group
     void setExpensePerPerson(const float expensePerPerson);

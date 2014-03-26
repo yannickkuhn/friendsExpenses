@@ -34,13 +34,13 @@ float Group::expensesPerPerson() {
 
 // Getters of Person
 
-const float Group::getExpensePerPerson() {
+const float Group::getExpensePerPerson() const {
 	return _expensePerPerson;
 }
-const float Group::getTotalExpenses() {
+const float Group::getTotalExpenses() const {
 	return _totalExpenses;
 }
-const string& Group::getName() {
+const string& Group::getName() const {
 	return _name;
 }
 

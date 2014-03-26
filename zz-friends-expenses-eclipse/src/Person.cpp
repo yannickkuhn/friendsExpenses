@@ -15,6 +15,12 @@ Person::Person() :
 
 }
 
+Person::Person(const Group *iGroup) :
+	_expenses(0),
+	_payback(0),
+	_group(iGroup) {
+}
+
 Person::~Person() {
 
 }
@@ -31,13 +37,13 @@ const string& Person::getName() const {
 const string& Person::getPhoneNumber() const {
 	return _phoneNumber;
 }
-const float Person::getExpenses() {
+const float Person::getExpenses() const {
 	return _expenses;
 }
-const float Person::getPayback() {
+const float Person::getPayback() const {
 	return _payback;
 }
-Group* Person::getGroup() {
+const Group* Person::getGroup() const {
 	return _group;
 }
 
@@ -54,7 +60,4 @@ void Person::setExpenses(const float expenses) {
 }
 void Person::setPayback(const float payback) {
 	_payback = payback;
-}
-void Person::setGroup(Group *group) {
-	_group = group;
 }

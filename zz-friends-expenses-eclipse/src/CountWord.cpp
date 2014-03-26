@@ -5,18 +5,11 @@
  *      Author: ubuntu
  */
 
-#include <cstring>
-
 #include "CountWord.hpp"
 
-using namespace std;
 
-/*CountWord::CountWord() {
-
-}*/
-
-CountWord::CountWord(const string& iText) {
-	this->_text = iText;
+CountWord::CountWord(string iText) {
+	_text = iText;
 }
 
 unsigned int CountWord::count() {
@@ -35,5 +28,23 @@ unsigned int CountWord::count() {
         aWord = strtok(0, aDelimiters);
     }
     return aCount;
+}
+
+vector<string> CountWord::split() {
+    vector<string> aWords;
+    char *aWord = 0;
+    char aDelimiters[] = " :.!\"#$%&'()*+,-/;<=>?@[]\\^_`{|}~\n\t\r";
+    // Cf. http://www.cplusplus.com/reference/cctype/
+    // for the list of characters
+
+    char aText[_text.length() + 1];
+    strcpy(aText, _text.c_str());
+
+    aWord = strtok(aText, aDelimiters);
+    while (aWord) {
+    	aWords.push_back(aWord);
+        aWord = strtok(0, aDelimiters);
+    }
+    return aWords;
 }
 
